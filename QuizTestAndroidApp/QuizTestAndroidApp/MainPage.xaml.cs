@@ -12,6 +12,9 @@
         private async void GoFirst(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NewPage1());
+
+            
+
         }
     }
 }

@@ -9,7 +9,7 @@
             Padding="30,0"
             Spacing="25">
             <Image
-                Source="dotnet_bot.png"
+                Source="mainmenuimg.png"
                 HeightRequest="185"
                 Aspect="AspectFit"
                 SemanticProperties.Description="dot net bot in a hovercraft number nine" />
@@ -20,14 +20,14 @@
                 SemanticProperties.HeadingLevel="Level1" />
 
             <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
+                Text="Ready to check your general knowledge?"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Click to start the quiz!" />
 
             <Button x:Name="btnGoFirst"
                 BackgroundColor="Green"
-                Text="Go To First Page"
+                Text="Im ready to start the quiz!"
                 Clicked="GoFirst"/>
             
         </VerticalStackLayout>

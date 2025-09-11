@@ -4,8 +4,15 @@
              x:Class="QuizTestAndroidApp.NewPage1"
              Title="NewPage1">
 
+    
     <VerticalStackLayout Spacing="10">
 
+        <Label 
+            Text="Score: 0" 
+            x:Name="scoreLabel" 
+            FontSize="18" 
+            HorizontalOptions="Center"/>
+        
         <Image 
             Source="dotnet_bot.png"
             WidthRequest="150"
@@ -13,7 +20,7 @@
             HorizontalOptions="Center" />
         
         <Label 
-            Text="1 + 1 is equal to:!"
+            Text="1 + 1 is equal to:"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
