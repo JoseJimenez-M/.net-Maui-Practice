@@ -3,8 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QuizTestAndroidApp.NewPage1"
              Title="NewPage1">
-    
-    <VerticalStackLayout>
+
+    <VerticalStackLayout Spacing="10">
+
+        <Image 
+            Source="dotnet_bot.png"
+            WidthRequest="150"
+            HeightRequest="150"
+            HorizontalOptions="Center" />
+        
         <Label 
             Text="1 + 1 is equal to:!"
             VerticalOptions="Center" 

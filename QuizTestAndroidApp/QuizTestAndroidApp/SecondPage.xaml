@@ -8,5 +8,11 @@
             Text="You won!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <Button x:Name="btnGoMain"
+            BackgroundColor="Violet"
+            Text="Go To Main Page"
+            Clicked="GoMain"/>
+        
     </VerticalStackLayout>
 </ContentPage>

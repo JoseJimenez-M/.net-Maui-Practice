@@ -6,4 +6,11 @@ public partial class SecondPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private async void GoMain(object sender, EventArgs e)
+    {
+        await Navigation.PopToRootAsync();
+        // await Navigation.PopAsync(); // Navigate back 
+    }
+
 }
