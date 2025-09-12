@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizTestAndroidApp.Question3"
+             Title="Question3">
+    <Grid>
+        <Image
+            Source="degradadoquestionbiased.jpg"
+            Aspect="AspectFill"
+            Opacity="500"
+        />
+
+        <VerticalStackLayout Spacing="10" >
+            <Label 
+                BackgroundColor="DarkRed"
+                Text="QUIZ"
+        
+                FontAttributes="Bold"
+                FontFamily="Oswald"
+                TextColor="White"
+                FontSize="45"
+                HorizontalTextAlignment="Center"
+                />
+            <Image 
+                Source="biasedimage.jpg"
+                Margin="-10"
+            
+            />
+            <Label
+                BackgroundColor="DarkRed"
+                Text="What is better?
+                        ( ‼️this is a biased question‼️😁 )"
+                FontAttributes="Bold"
+                TextColor="White"
+                FontSize="30"
+                HorizontalTextAlignment="Center"
+                FontFamily="Oswald"
+            
+            
+        />
+
+            <!-- Vertical Stack  for the spaces of the butons, otherwise,
+        they will be too separated...-->
+            <VerticalStackLayout Spacing="-60">
+                <!--Correct-->
+                <Button
+                    x:Name="btnTransformers07"
+            
+                    Margin="45"
+                    BackgroundColor="#C55757"
+                    Text="Transformers(2007)"
+                    TextColor="White"
+                    FontSize="30"
+                    FontFamily="Oswald"
+                    BorderColor="White"
+                    BorderWidth="2"
+                    Clicked="RigthAnswer"
+                    FontAttributes="Bold"
+        />
+                <!--False-->
+                <Button
+                    x:Name="btnAvengers11"
+                    BackgroundColor="#C55757"           
+                    Margin="45"
+                    Text="Avengers(2011)"
+                    TextColor="White"
+                    FontSize="30"
+                    FontFamily="Oswald"
+                    BorderColor="White"
+                    BorderWidth="2"
+                    Clicked="WrongAnswer"
+                    FontAttributes="Bold"
+
+        />
+                <!--False-->
+                <Button
+                    x:Name="btnStarTrekSg"             
+                    BackgroundColor="#C55757"
+                    Margin="45"
+                    Text="Stark Trek Saga"
+                    TextColor="White"
+                    FontSize="30"
+                    FontFamily="Oswald"
+                    BorderColor="White"
+                    BorderWidth="2"
+                    FontAttributes="Bold"
+                    Clicked="WrongAnswer"
+        />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+
+
+
+    </Grid>
+</ContentPage>

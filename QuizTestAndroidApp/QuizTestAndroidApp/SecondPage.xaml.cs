@@ -11,6 +11,7 @@ public partial class SecondPage : ContentPage
     {
         await Navigation.PopToRootAsync();
         // await Navigation.PopAsync(); // Navigate back 
+        
     }
 
 }

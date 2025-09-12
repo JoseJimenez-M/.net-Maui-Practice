@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizTestAndroidApp.Question2"
+             Title="Question2">
+    <Grid>
+        <Image
+            Source="fondodarthvader.jpg"
+            Aspect="AspectFill"
+            />
+
+        <VerticalStackLayout Spacing="10" >
+            <Label 
+            
+                Text="QUIZ"
+                Margin="6"
+            
+                FontAttributes="Bold"
+                FontFamily="Oswald"
+                TextColor="White"
+                FontSize="45"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Image 
+                Source="darthvader.jpeg"
+                Margin="-10"
+                
+                />
+            <Label
+                BackgroundColor="DarkRed"
+                Text="Who was this guy?"
+                TextColor="White"
+                FontSize="30"
+                HorizontalTextAlignment="Center"
+                FontFamily="Oswald"
+                
+                
+            />
+
+            <!-- Vertical Stack  for the spaces of the butons, otherwise,
+            they will be too separated...-->
+            <VerticalStackLayout Spacing="-60">
+                <!--Correct-->
+                <Button
+                x:Name="btnAnakinSolo"
+                BackgroundColor="Black"
+                Margin="45"
+                
+                Text="Anakin Solo"
+                TextColor="White"
+                FontSize="30"
+                FontFamily="Oswald"
+                BorderColor="White"
+                BorderWidth="2"
+                Clicked="WrongAnswer"
+            />
+                <!--False-->
+                <Button
+                x:Name="btnDarthSidious"
+                BackgroundColor="Black"
+                Margin="45"
+                Text="Darth Sidious"
+                TextColor="White"
+                FontSize="30"
+                FontFamily="Oswald"
+                BorderColor="White"
+                BorderWidth="2"
+                Clicked="WrongAnswer"
+
+            />
+                <!--False-->
+                <Button
+                x:Name="btnAnakinSkywwalker"             
+                BackgroundColor="Black"
+                Margin="45"
+                Text="Anakin Skywalker"
+                TextColor="White"
+                FontSize="30"
+                FontFamily="Oswald"
+                BorderColor="White"
+                BorderWidth="2"
+                Clicked="RigthAnswer"
+            />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+        
+
+
+    </Grid>
+</ContentPage>

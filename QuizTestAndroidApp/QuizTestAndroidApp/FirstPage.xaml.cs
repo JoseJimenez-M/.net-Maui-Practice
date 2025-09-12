@@ -4,11 +4,12 @@ public partial class NewPage1 : ContentPage
 {
 	public NewPage1()
 	{
-		InitializeComponent();
+		
 	}
 
     private async void Rigth(object sender, EventArgs e)
     {
+        
         await Navigation.PushAsync(new SecondPage());
     }
 
