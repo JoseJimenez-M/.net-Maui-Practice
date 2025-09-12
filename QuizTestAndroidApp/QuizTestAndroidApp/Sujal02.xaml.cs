@@ -5,6 +5,7 @@ public partial class Sujal02 : ContentPage
     public Sujal02()
     {
         InitializeComponent();
+        scoreLabel.Text = $"Score: {QuizScoreService.Score}";
     }
 
     private async void Right(object sender, EventArgs e)

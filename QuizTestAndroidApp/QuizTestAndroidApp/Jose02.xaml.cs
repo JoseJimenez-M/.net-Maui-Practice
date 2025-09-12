@@ -5,6 +5,7 @@ public partial class Jose02 : ContentPage
     public Jose02()
     {
         InitializeComponent();
+        scoreLabel.Text = $"Score: {QuizScoreService.Score}";
     }
 
     private async void Right(object sender, EventArgs e)
