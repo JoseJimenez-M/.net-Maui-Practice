@@ -1,8 +1,8 @@
 namespace QuizTestAndroidApp;
 
-public partial class NewPage1 : ContentPage
+public partial class Sujal03 : ContentPage
 {
-	public NewPage1()
+	public Sujal03()
 	{
 		InitializeComponent();
 	}
@@ -10,7 +10,7 @@ public partial class NewPage1 : ContentPage
     private async void Rigth(object sender, EventArgs e)
     {
         CorrectAnswer(sender, e);
-        await Navigation.PushAsync(new Sujal02());
+        await Navigation.PushAsync(new Sujal01());
     }
 
     private async void Wrong(object? sender, EventArgs e)
@@ -41,6 +41,4 @@ public partial class NewPage1 : ContentPage
         QuizScoreService.AddPoint(-1);
         scoreLabel.Text = $"Score: {QuizScoreService.Score}";
     }
-
-
 }
