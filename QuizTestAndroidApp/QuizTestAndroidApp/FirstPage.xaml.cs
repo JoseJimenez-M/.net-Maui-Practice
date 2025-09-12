@@ -10,7 +10,7 @@ public partial class NewPage1 : ContentPage
     private async void Rigth(object sender, EventArgs e)
     {
         CorrectAnswer(sender, e);
-        await Navigation.PushAsync(new SecondPage());
+        await Navigation.PushAsync(new Question1Page());
     }
 
     private async void Wrong(object? sender, EventArgs e)
