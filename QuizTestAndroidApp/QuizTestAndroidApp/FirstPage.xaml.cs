@@ -2,15 +2,15 @@ namespace QuizTestAndroidApp;
 
 public partial class NewPage1 : ContentPage
 {
-	public NewPage1()
-	{
-		InitializeComponent();
-	}
+    public NewPage1()
+    {
+        InitializeComponent();
+    }
 
-    private async void Rigth(object sender, EventArgs e)
+    private async void Right(object sender, EventArgs e)
     {
         CorrectAnswer(sender, e);
-        await Navigation.PushAsync(new Sujal02());
+        await Navigation.PushAsync(new Jose02());
     }
 
     private async void Wrong(object? sender, EventArgs e)

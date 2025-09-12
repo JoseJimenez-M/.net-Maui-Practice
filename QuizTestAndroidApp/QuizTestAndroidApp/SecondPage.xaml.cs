@@ -2,9 +2,9 @@ namespace QuizTestAndroidApp;
 
 public partial class SecondPage : ContentPage
 {
-	public SecondPage()
-	{
-		InitializeComponent();
+    public SecondPage()
+    {
+        InitializeComponent();
         scoreLabel.Text = $"Score: {QuizScoreService.Score}";
     }
 
@@ -15,7 +15,7 @@ public partial class SecondPage : ContentPage
 
         //Restart score
         QuizScoreService.Reset();
-        
+
     }
 
 }

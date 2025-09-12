@@ -2,7 +2,7 @@
 {
     public partial class MainPage : ContentPage
     {
-       
+
 
         public MainPage()
         {
@@ -11,7 +11,7 @@
 
         private async void GoFirst(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Sujal03());
+            await Navigation.PushAsync(new NewPage1());
             //result page: SecondPage
 
 

@@ -2,12 +2,12 @@ namespace QuizTestAndroidApp;
 
 public partial class Sujal01 : ContentPage
 {
-	public Sujal01()
-	{
-		InitializeComponent();
-	}
+    public Sujal01()
+    {
+        InitializeComponent();
+    }
 
-    private async void Rigth(object sender, EventArgs e)
+    private async void Right(object sender, EventArgs e)
     {
         CorrectAnswer(sender, e);
         await Navigation.PushAsync(new Sujal02());

@@ -35,7 +35,7 @@
         <Button x:Name="btn33"
         BackgroundColor="Green"
         Text="Jose"
-        Clicked="Rigth"/>
+        Clicked="Right"/>
 
     </VerticalStackLayout>
 </ContentPage>
