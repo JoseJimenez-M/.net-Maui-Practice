@@ -11,7 +11,7 @@
 
         private async void GoFirst(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Question2Page());
+            await Navigation.PushAsync(new Sujal03());
             //result page: SecondPage
 
 
