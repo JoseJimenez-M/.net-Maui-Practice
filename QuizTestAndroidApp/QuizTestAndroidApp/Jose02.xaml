@@ -18,24 +18,24 @@
         HorizontalOptions="Center" />
 
         <Label 
-        Text="What is my name:"
+        Text="How many continents are there in the world?"
         VerticalOptions="Center" 
         HorizontalOptions="Center" />
 
         <Button x:Name="btn11"
         BackgroundColor="Green"
-        Text="The answer is pizza"
+        Text="5"
         Clicked="Wrong"/>
 
         <Button x:Name="btn22"
         BackgroundColor="Green"
-        Text="The answer is Green"
-        Clicked="Wrong"/>
+        Text="7"
+        Clicked="Right"/>
 
         <Button x:Name="btn33"
         BackgroundColor="Green"
-        Text="Jose"
-        Clicked="Right"/>
+        Text="9"
+        Clicked="Wrong"/>
 
     </VerticalStackLayout>
 </ContentPage>

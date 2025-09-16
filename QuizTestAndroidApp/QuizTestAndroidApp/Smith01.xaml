@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizTestAndroidApp.Smith01"
+             Title="Smith01">
+
+    <VerticalStackLayout Spacing="10">
+
+        <Label 
+Text="Score: 0" 
+x:Name="scoreLabel" 
+FontSize="18" 
+HorizontalOptions="Center"/>
+
+        <Image 
+Source="dotnet_bot.png"
+WidthRequest="150"
+HeightRequest="150"
+HorizontalOptions="Center" />
+
+        <Label 
+Text="What is the most spoken language in the world?"
+VerticalOptions="Center" 
+HorizontalOptions="Center" />
+
+        <Button x:Name="btn11"
+BackgroundColor="Green"
+Text="English"
+Clicked="Wrong"/>
+
+        <Button x:Name="btn22"
+BackgroundColor="Green"
+Text="Spanish"
+Clicked="Wrong"/>
+
+        <Button x:Name="btn33"
+BackgroundColor="Green"
+Text="Mandarin"
+Clicked="Right"/>
+
+    </VerticalStackLayout>
+    
+</ContentPage>

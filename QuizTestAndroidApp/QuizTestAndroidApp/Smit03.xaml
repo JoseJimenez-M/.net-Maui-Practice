@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizTestAndroidApp.Smit03"
+             Title="Smit03">
+
+    <VerticalStackLayout Spacing="10">
+
+        <Label 
+Text="Score: 0" 
+x:Name="scoreLabel" 
+FontSize="18" 
+HorizontalOptions="Center"/>
+
+        <Image 
+Source="dotnet_bot.png"
+WidthRequest="150"
+HeightRequest="150"
+HorizontalOptions="Center" />
+
+        <Label 
+Text="What gas do humans mainly breathe to live?"
+VerticalOptions="Center" 
+HorizontalOptions="Center" />
+
+        <Button x:Name="btn11"
+BackgroundColor="Green"
+Text="Oxygen"
+Clicked="Right"/>
+
+        <Button x:Name="btn22"
+BackgroundColor="Green"
+Text="Hydrogen"
+Clicked="Wrong"/>
+
+        <Button x:Name="btn33"
+BackgroundColor="Green"
+Text="Carbon dioxide"
+Clicked="Wrong"/>
+
+    </VerticalStackLayout>
+    
+</ContentPage>

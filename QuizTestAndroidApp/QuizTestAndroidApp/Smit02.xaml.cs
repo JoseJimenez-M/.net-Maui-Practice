@@ -1,9 +1,9 @@
 namespace QuizTestAndroidApp;
 
-public partial class Sujal03 : ContentPage
+public partial class Smit02 : ContentPage
 {
-    public Sujal03()
-    {
+	public Smit02()
+	{
         InitializeComponent();
         scoreLabel.Text = $"Score: {QuizScoreService.Score}";
     }
@@ -11,7 +11,7 @@ public partial class Sujal03 : ContentPage
     private async void Right(object sender, EventArgs e)
     {
         CorrectAnswer(sender, e);
-        await Navigation.PushAsync(new Fran01());
+        await Navigation.PushAsync(new Smit03());
     }
 
     private async void Wrong(object? sender, EventArgs e)

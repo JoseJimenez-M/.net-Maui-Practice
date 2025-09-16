@@ -20,23 +20,23 @@
             HorizontalOptions="Center" />
         
         <Label 
-            Text="1 + 1 is equal to:"
+            Text="What is the capital of Canada?"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
         <Button x:Name="btn11"
             BackgroundColor="Green"
-            Text="The answer is pizza"
+            Text="Toronto"
             Clicked="Wrong"/>
 
         <Button x:Name="btn22"
             BackgroundColor="Green"
-            Text="The answer is Green"
+            Text="Vancouver"
             Clicked="Wrong"/>
 
         <Button x:Name="btn33"
             BackgroundColor="Green"
-            Text="The answer is 2"
+            Text="Ottawa"
             Clicked="Right"/>
 
     </VerticalStackLayout>
