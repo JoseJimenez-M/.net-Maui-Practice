@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ColorMaker.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Title -->
+            <Label Text="Color Maker"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="Black"/>
+
+            <!-- Red Slider -->
+            <Label Text="Red Color"
+                   FontSize="18"
+                   TextColor="Red"
+                   FontAttributes="Bold"/>
+            <Slider x:Name="sldRed"
+                    Minimum="0" Maximum="255"
+                    ValueChanged="OnSliderValueChanged"/>
+
+            <!-- Green Slider -->
+            <Label Text="Green Color"
+                   FontSize="18"
+                   TextColor="Green"
+                   FontAttributes="Bold"/>
+            <Slider x:Name="sldGreen"
+                    Minimum="0" Maximum="255"
+                    ValueChanged="OnSliderValueChanged"/>
+
+            <!-- Blue Slider -->
+            <Label Text="Blue Color"
+                   FontSize="18"
+                   TextColor="Blue"
+                   FontAttributes="Bold"/>
+            <Slider x:Name="sldBlue"
+                    Minimum="0" Maximum="255"
+                    ValueChanged="OnSliderValueChanged"/>
+
+            <!-- Hex Code and Copy Button -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label x:Name="lblHex"
+                       Text="#FFFFFF"
+                       FontSize="20"
+                       TextColor="Black"
+                       VerticalOptions="Center"/>
+                <ImageButton Source="copy.png"
+                             Clicked="OnCopyClicked"
+                             WidthRequest="35"
+                             HeightRequest="35"
+                             BackgroundColor="Transparent"/>
+            </HorizontalStackLayout>
+
+            <!-- Random Button -->
+            <Button Text="Generate Random Color"
+                    Clicked="OnRandomClicked"
+                    BackgroundColor="#6A0DAD"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="8"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
