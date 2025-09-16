@@ -4,32 +4,45 @@
              x:Class="QuizTestAndroidApp.MainPage">
 
     <ScrollView>
-        
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Image
-                Source="mainmenuimg.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a hovercraft number nine" />
 
-            <Label
-                Text="Welcome to the quiz!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
+        <VerticalStackLayout Padding="30,50" Spacing="30">
 
-            <Label
-                Text="Ready to check your general knowledge?"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Click to start the quiz!" />
+            <!-- App Logo / Hero Image -->
+            <Frame HasShadow="False" Padding="0" CornerRadius="20" BackgroundColor="Transparent">
+                <Image
+                    Source="mainmenuimg.png"
+                    HeightRequest="200"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Center"/>
+            </Frame>
 
+            <!-- Title -->
+            <Label Text="Welcome to the Quiz!"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#2E3A59"
+                   HorizontalOptions="Center"
+                   SemanticProperties.HeadingLevel="Level1"/>
+
+            <!-- Subtitle -->
+            <Label Text="Test your general knowledge with fun and interactive questions."
+                   FontSize="18"
+                   TextColor="#555"
+                   HorizontalTextAlignment="Center"
+                   SemanticProperties.HeadingLevel="Level2"/>
+
+            <!-- Start Button -->
             <Button x:Name="btnGoFirst"
-                BackgroundColor="Green"
-                Text="Im ready to start the quiz!"
-                Clicked="GoFirst"/>
-            
+                    Text="🎯 I'm Ready to Start!"
+                    FontSize="20"
+                    TextColor="White"
+                    BackgroundColor="#4CAF50"
+                    CornerRadius="25"
+                    HeightRequest="55"
+                    Clicked="GoFirst"
+                    HorizontalOptions="Center"
+                    WidthRequest="250"/>
+
         </VerticalStackLayout>
     </ScrollView>
 
