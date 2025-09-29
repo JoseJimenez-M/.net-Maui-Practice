@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MovieHub.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:MovieHub.Models"
+    mc:Ignorable="d"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    Title="MovieHub">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" Padding="16" RowSpacing="12">
+
+        <!-- Header -->
+        <VerticalStackLayout Grid.Row="0" Spacing="2">
+            <Label Text="MovieHub" FontSize="28" FontAttributes="Bold"/>
+            <Label Text="Search latest movies or browse by genre"
+                   FontSize="13" TextColor="{DynamicResource SecondaryTextColor}"/>
+        </VerticalStackLayout>
+
+        <!-- Search bar -->
+        <SearchBar x:Name="SearchBox"
+                   Grid.Row="1"
+                   Placeholder="Search movies..."
+                   SearchCommand="{x:Reference Name=SearchButton}"
+                   TextChanged="OnSearchTextChanged" />
+
+        <!-- Genre picker row -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,Auto" ColumnSpacing="8">
+            <Picker x:Name="GenrePicker" Title="All genres" />
+            <Button x:Name="SearchButton"
+                    Grid.Column="1"
+                    Text="Search"
+                    Clicked="OnSearchClicked" />
+        </Grid>
+
+        <!-- Movies list -->
+        <RefreshView Grid.Row="3" x:Name="RefreshHost" Refreshing="OnRefresh">
+            <CollectionView x:Name="MoviesList" ItemsSource="{Binding}" SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout Spacing="6" Padding="24" HorizontalOptions="Center" VerticalOptions="Center">
+                        <ActivityIndicator x:Name="BusySpinner" IsVisible="False" IsRunning="False" />
+                        <Label Text="No movies to show." FontAttributes="Italic" TextColor="{DynamicResource SecondaryTextColor}"/>
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Movie">
+                        <Border StrokeShape="RoundRectangle 16" StrokeThickness="0" Background="{DynamicResource FrameBackgroundColor}" Padding="12" Margin="0,6">
+                            <Grid ColumnDefinitions="110,*,Auto" RowDefinitions="Auto,Auto,*" ColumnSpacing="12">
+                                <Image Grid.RowSpan="3" Grid.Column="0"
+                                       Source="{Binding PosterUrl}"
+                                       Aspect="AspectFill" WidthRequest="110" HeightRequest="160" />
+                                <Label Grid.Column="1" Grid.Row="0"
+                                       Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Grid.Row="1"
+                                       Text="{Binding ReleaseDate}"
+                                       FontSize="12" TextColor="{DynamicResource SecondaryTextColor}"/>
+                                <Border Grid.Column="2" Grid.Row="0" Background="{DynamicResource Primary}" Padding="6,2"
+                                        StrokeShape="RoundRectangle 12" StrokeThickness="0" VerticalOptions="Start">
+                                    <Label Text="{Binding VoteAverage, StringFormat='⭐ {0:F1}'}" FontSize="12" TextColor="White"/>
+                                </Border>
+                                <Label Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"
+                                       Text="{Binding Overview}" LineBreakMode="TailTruncation" MaxLines="4"
+                                       FontSize="13" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <!-- Footer -->
+        <Label Grid.Row="4" Text="Data from TMDB" FontSize="11"
+               TextColor="{DynamicResource SecondaryTextColor}" HorizontalOptions="Center" />
+    </Grid>
+</ContentPage>

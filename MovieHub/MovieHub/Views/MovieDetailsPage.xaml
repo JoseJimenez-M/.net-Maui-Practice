@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MovieHub.Views.MovieDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Details">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="12" Spacing="12">
+            <Image HeightRequest="200"
+                   Aspect="AspectFill"
+                   Source="{Binding BackdropFullPath}" />
+
+            <Label Text="{Binding title}" FontSize="24" FontAttributes="Bold" />
+
+            <HorizontalStackLayout Spacing="6">
+                <Label Text="⭐" />
+                <Label Text="{Binding vote_average, StringFormat='{0:F1}'}" />
+                <Label Text="•" />
+                <Label Text="{Binding release_date}" />
+            </HorizontalStackLayout>
+
+            <Label Text="Overview" FontAttributes="Bold" FontSize="18" />
+            <Label Text="{Binding overview}" LineBreakMode="WordWrap" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
