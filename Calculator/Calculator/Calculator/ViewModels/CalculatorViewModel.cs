@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Calculator.Models;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Calculator.Models;
 
 namespace Calculator.ViewModels
 {
@@ -29,12 +25,76 @@ namespace Calculator.ViewModels
 
         public void PressNumber(string number)
         {
-            PreviewText += number;
+            if (PreviewText.Length == 1 && PreviewText == "0")
+                PreviewText = number;
+            else
+                PreviewText += number;
         }
 
         public void PressOperator(string op)
         {
-            PreviewText += op;
+            if (PreviewText.Length == 0 && op != "-")
+                return;
+            if (PreviewText.EndsWith("+") || PreviewText.EndsWith("-") ||
+                PreviewText.EndsWith("*") || PreviewText.EndsWith("/"))
+            {
+                PreviewText = PreviewText[..^1] + op;
+            }
+            else
+            {
+                PreviewText += op;
+            }
+        }
+
+        public void PressDecimal()
+        {
+            // Prevent multiple decimals in a single number segment
+            if (string.IsNullOrEmpty(PreviewText) ||
+                PreviewText.EndsWith("+") ||
+                PreviewText.EndsWith("-") ||
+                PreviewText.EndsWith("*") ||
+                PreviewText.EndsWith("/"))
+            {
+                PreviewText += "0.";
+            }
+            else
+            {
+                int lastOp = Math.Max(Math.Max(PreviewText.LastIndexOf("+"), PreviewText.LastIndexOf("-")),
+                               Math.Max(PreviewText.LastIndexOf("*"), PreviewText.LastIndexOf("/")));
+                string lastNumber = lastOp >= 0 ? PreviewText[(lastOp + 1)..] : PreviewText;
+
+                if (!lastNumber.Contains("."))
+                    PreviewText += ".";
+            }
+        }
+        public void Reciprocal()
+        {
+            if (double.TryParse(ResultText, out double value) && value != 0)
+            {
+                double result = 1 / value;
+                ResultText = result.ToString();
+                PreviewText = $"1/({value})";
+            }
+        }
+
+        public void Percent()
+        {
+            if (double.TryParse(ResultText, out double value))
+            {
+                double result = value / 100;
+                ResultText = result.ToString();
+                PreviewText = $"{value}%";
+            }
+        }
+
+        public void Negate()
+        {
+            if (double.TryParse(ResultText, out double value))
+            {
+                value = -value;
+                ResultText = value.ToString();
+                PreviewText = value.ToString();
+            }
         }
 
         public void Clear()
