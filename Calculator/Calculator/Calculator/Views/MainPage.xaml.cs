@@ -46,4 +46,8 @@ public partial class MainPage : ContentPage
     private void OnNegateClicked(object sender, EventArgs e) =>
         (BindingContext as CalculatorViewModel)?.Negate();
 
+
+    private void OnDeleteClicked(object sender, EventArgs e) =>
+        VM?.Delete();
+
 }

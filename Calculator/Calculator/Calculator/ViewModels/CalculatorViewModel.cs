@@ -103,6 +103,15 @@ namespace Calculator.ViewModels
             ResultText = "0";
         }
 
+
+        public void Delete()
+        {
+            if (!string.IsNullOrEmpty(PreviewText) && PreviewText != "0")
+            {
+                PreviewText = PreviewText.Length > 1 ? PreviewText[..^1] : "0";
+            }
+        }
+
         public void Calculate()
         {
             var result = _evaluator.Evaluate(PreviewText);
