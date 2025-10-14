@@ -2,71 +2,96 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Calculator.ViewModels"
-             x:Class="Calculator.MainPage">
+             x:Class="Calculator.MainPage"
+             BackgroundColor="Black">
 
     <ContentPage.BindingContext>
         <vm:CalculatorViewModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout Padding="20">
-        <!-- Preview -->
-        <Label Text="{Binding PreviewText}"
-               FontSize="24"
-               HorizontalOptions="End" />
+    <!-- Full-page grid, no vertical stack-->
+    <Grid RowSpacing="0" ColumnSpacing="0"
+          VerticalOptions="FillAndExpand"
+          HorizontalOptions="FillAndExpand">
 
-        <!-- Result -->
-        <Label Text="{Binding ResultText}"
-               FontSize="32"
-               FontAttributes="Bold"
-               HorizontalOptions="End" />
+        <!-- Row 0: Header (Auto height) -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- For Home label -->
+            <RowDefinition Height="Auto" />
+            <!-- For Preview/Result labels -->
+            <RowDefinition Height="*" />
+            <!-- Calculator button grid fills rest -->
+        </Grid.RowDefinitions>
 
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
-              ColumnDefinitions="Auto,Auto,Auto,Auto"
-              Margin="0,20,0,0"
-              ColumnSpacing="10"
-              RowSpacing="10">
+        <!-- Header/Home -->
+        <Label Text=""
+               FontSize="20"
+               VerticalOptions="Start"
+               HorizontalOptions="Start"
+               Margin="10,5,0,0"
+               Grid.Row="0"/>
 
-            <!-- Nums -->
-            <Button Text="7" Grid.Row="0" Grid.Column="0"
-                    Clicked="OnNumberClicked" />
-            <Button Text="8" Grid.Row="0" Grid.Column="1"
-                    Clicked="OnNumberClicked" />
-            <Button Text="9" Grid.Row="0" Grid.Column="2"
-                    Clicked="OnNumberClicked" />
+        <!-- Display stack (Preview & Result) -->
+        <VerticalStackLayout Grid.Row="1"
+                             Padding="4,0,4,0"
+                             Spacing="2">
+            <Label Text="{Binding PreviewText}"
+                   FontSize="75"
+                   TextColor="White"
+                   HorizontalTextAlignment="End"
+                   VerticalOptions="Start"
+                   HorizontalOptions="FillAndExpand"/>
+            <Label Text="{Binding ResultText}"
+                   FontSize="68" FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalTextAlignment="End"
+                   VerticalOptions="Start"
+                   HorizontalOptions="FillAndExpand"/>
+        </VerticalStackLayout>
 
-            <Button Text="4" Grid.Row="1" Grid.Column="0"
-                    Clicked="OnNumberClicked" />
-            <Button Text="5" Grid.Row="1" Grid.Column="1"
-                    Clicked="OnNumberClicked" />
-            <Button Text="6" Grid.Row="1" Grid.Column="2"
-                    Clicked="OnNumberClicked" />
+        <!-- Calculator Grid -->
+        <Grid Grid.Row="2"
+              Padding="0"
+              RowSpacing="6" ColumnSpacing="6"
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand">
 
-            <Button Text="1" Grid.Row="2" Grid.Column="0"
-                    Clicked="OnNumberClicked" />
-            <Button Text="2" Grid.Row="2" Grid.Column="1"
-                    Clicked="OnNumberClicked" />
-            <Button Text="3" Grid.Row="2" Grid.Column="2"
-                    Clicked="OnNumberClicked" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-            <Button Text="0" Grid.Row="3" Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Clicked="OnNumberClicked" />
-
-            <Button Text="+" Grid.Row="0" Grid.Column="3"
-                    Clicked="OnOperatorClicked" />
-            <Button Text="-" Grid.Row="1" Grid.Column="3"
-                    Clicked="OnOperatorClicked" />
-            <Button Text="*" Grid.Row="2" Grid.Column="3"
-                    Clicked="OnOperatorClicked" />
-            <Button Text="/" Grid.Row="3" Grid.Column="3"
-                    Clicked="OnOperatorClicked" />
-
-            <Button Text="C" Grid.Row="3" Grid.Column="2"
-                    Clicked="OnClearClicked" />
-            <Button Text="=" Grid.Row="4" Grid.Column="0"
-                    Grid.ColumnSpan="4"
-                    Clicked="OnEqualClicked" />
+            <!-- Buttons: same as before -->
+            <Button Text="AC" Grid.Row="0" Grid.Column="0" BackgroundColor="Orange" TextColor="White" FontSize="24" CornerRadius="12" Clicked="OnClearClicked"/>
+            <Button Text="1/x" Grid.Row="0" Grid.Column="1" BackgroundColor="#3b3c36" TextColor="White" FontSize="24" CornerRadius="12" Clicked="OnReciprocalClicked"/>
+            <Button Text="%" Grid.Row="0" Grid.Column="2" BackgroundColor="#3b3c36" TextColor="White" FontSize="24" CornerRadius="12" Clicked="OnPercentClicked"/>
+            <Button Text="/" Grid.Row="0" Grid.Column="3" BackgroundColor="#3b3c36" TextColor="White" FontSize="24" CornerRadius="12" Clicked="OnOperatorClicked"/>
+            <Button Text="7" Grid.Row="1" Grid.Column="0" BackgroundColor="#3b3c36" TextColor="White" FontSize="28" CornerRadius="12" Clicked="OnNumberClicked"/>
+            <Button Text="8" Grid.Row="1" Grid.Column="1" BackgroundColor="#3b3c36" TextColor="White" FontSize="28" CornerRadius="12" Clicked="OnNumberClicked"/>
+            <Button Text="9" Grid.Row="1" Grid.Column="2" BackgroundColor="#3b3c36" TextColor="White" FontSize="28" CornerRadius="12" Clicked="OnNumberClicked"/>
+            <Button Text="*" Grid.Row="1" Grid.Column="3" BackgroundColor="#3b3c36" TextColor="White" FontSize="24" CornerRadius="12" Clicked="OnOperatorClicked"/>
+            <Button Text="4" Grid.Row="2" Grid.Column="0" BackgroundColor="#3b3c36" TextColor="White" FontSize="28" CornerRadius="12" Clicked="OnNumberClicked"/>
+            <Button Text="5" Grid.Row="2" Grid.Column="1" BackgroundColor="#3b3c36" TextColor="White" FontSize="28" CornerRadius="12" Clicked="OnNumberClicked"/>
+            <Button Text="6" Grid.Row="2" Grid.Column="2" BackgroundColor="#3b3c36" TextColor="White" FontSize="28" CornerRadius="12" Clicked="OnNumberClicked"/>
+            <Button Text="-" Grid.Row="2" Grid.Column="3" BackgroundColor="#3b3c36" TextColor="White" FontSize="24" CornerRadius="12" Clicked="OnOperatorClicked"/>
+            <Button Text="1" Grid.Row="3" Grid.Column="0" BackgroundColor="#3b3c36" TextColor="White" FontSize="28" CornerRadius="12" Clicked="OnNumberClicked"/>
+            <Button Text="2" Grid.Row="3" Grid.Column="1" BackgroundColor="#3b3c36" TextColor="White" FontSize="28" CornerRadius="12" Clicked="OnNumberClicked"/>
+            <Button Text="3" Grid.Row="3" Grid.Column="2" BackgroundColor="#3b3c36" TextColor="White" FontSize="28" CornerRadius="12" Clicked="OnNumberClicked"/>
+            <Button Text="+" Grid.Row="3" Grid.Column="3" BackgroundColor="#3b3c36" TextColor="White" FontSize="24" CornerRadius="12" Clicked="OnOperatorClicked"/>
+            <Button Text="+/-" Grid.Row="4" Grid.Column="0" BackgroundColor="DarkOrange" TextColor="White" FontSize="24" CornerRadius="12" Clicked="OnNegateClicked"/>
+            <Button Text="0" Grid.Row="4" Grid.Column="1" BackgroundColor="#3b3c36" TextColor="White" FontSize="28" CornerRadius="12" Clicked="OnNumberClicked"/>
+            <Button Text="." Grid.Row="4" Grid.Column="2" BackgroundColor="#3b3c36" TextColor="White" FontSize="28" CornerRadius="12" Clicked="OnDecimalClicked"/>
+            <Button Text="=" Grid.Row="4" Grid.Column="3" BackgroundColor="DarkOrange" TextColor="White" FontSize="28" CornerRadius="12" FontAttributes="Bold" Clicked="OnEqualClicked"/>
         </Grid>
-    </VerticalStackLayout>
-
+    </Grid>
 </ContentPage>

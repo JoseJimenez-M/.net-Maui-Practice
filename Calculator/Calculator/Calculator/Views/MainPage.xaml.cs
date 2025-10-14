@@ -32,4 +32,22 @@ public partial class MainPage : ContentPage
     {
         VM?.Calculate();
     }
+
+    private void OnDecimalClicked(object sender, EventArgs e)
+    {
+        (BindingContext as CalculatorViewModel)?.PressDecimal();
+    }
+    private void OnReciprocalClicked(object sender, EventArgs e) =>
+    (BindingContext as CalculatorViewModel)?.Reciprocal();
+
+    private void OnPercentClicked(object sender, EventArgs e) =>
+        (BindingContext as CalculatorViewModel)?.Percent();
+
+    private void OnNegateClicked(object sender, EventArgs e) =>
+        (BindingContext as CalculatorViewModel)?.Negate();
+
+
+    private void OnDeleteClicked(object sender, EventArgs e) =>
+        VM?.Delete();
+
 }
