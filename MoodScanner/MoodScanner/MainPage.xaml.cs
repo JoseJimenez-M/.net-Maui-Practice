@@ -1,4 +1,11 @@
 ﻿using MoodScanner.Services;
+using Microsoft.Maui.Devices.Sensors;
+using Microsoft.Maui.Devices;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
+using Microsoft.Maui.Storage;
+using System.IO;
+
 
 namespace MoodScanner
 {
@@ -53,7 +60,8 @@ namespace MoodScanner
 
                     if (detectResult.Boxes.Count > 0)
                     {
-                        await App.Current.MainPage.DisplayAlert("Alert", "Human Face Detected and no of face detected " + detectResult.Boxes.Count, "Ok");
+                        await App.Current.MainPage.DisplayAlert("Alert", "Human Face Detected: " + detectResult.Boxes.Count, "Ok");
+                        PeopleCountLabel.Text = detectResult.Boxes.Count.ToString();
                     }
                     else
                     {
@@ -61,6 +69,109 @@ namespace MoodScanner
                     }
                 }
             }
+        }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await UpdateLocationAsync();
+            await UpdateWeatherAsync(); 
+        }
+
+
+        //LOCATION
+        private async Task UpdateLocationAsync()
+        {
+            try
+            {
+                var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
+                var location = await Geolocation.Default.GetLocationAsync(request);
+
+                if (location != null)
+                {
+                    var placemarks = await Geocoding.Default.GetPlacemarksAsync(location.Latitude, location.Longitude);
+                    var placemark = placemarks?.FirstOrDefault();
+
+                    if (placemark != null)
+                    {
+                        string street = placemark.Thoroughfare ?? "";
+                        string number = placemark.SubThoroughfare ?? "";
+                        string city = placemark.Locality ?? "";
+
+                        LocationLabel.Text = $"{street} {number}, {city}".Trim();
+                    }
+                    else
+                    {
+                        LocationLabel.Text = "Unknown location";
+                    }
+                }
+                else
+                {
+                    LocationLabel.Text = "Location not found";
+                }
+            }
+            catch (FeatureNotSupportedException)
+            {
+                LocationLabel.Text = "Feature not supported";
+            }
+            catch (PermissionException)
+            {
+                LocationLabel.Text = "Permission denied";
+            }
+            catch (Exception)
+            {
+                LocationLabel.Text = "Error retrieving location";
+            }
+        }
+
+
+        //WEATHER
+        private async Task UpdateWeatherAsync()
+        {
+            try
+            {
+                
+                var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
+                var location = await Geolocation.Default.GetLocationAsync(request);
+
+                if (location == null)
+                {
+                    WeatherLabel.Text = "Location not found";
+                    return;
+                }
+
+                double lat = location.Latitude;
+                double lon = location.Longitude;
+
+                //API Key OpenWeatherMap
+                string apiKey;
+
+                using (var stream = await FileSystem.OpenAppPackageFileAsync("apikey.txt"))
+                using (var reader = new StreamReader(stream))
+                {
+                    apiKey = reader.ReadToEnd().Trim();
+                }
+
+
+                string url = $"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={apiKey}&units=metric";
+
+                using (HttpClient client = new HttpClient())
+                {
+                    var response = await client.GetStringAsync(url);
+                    var json = JObject.Parse(response);
+
+                    string weatherMain = json["weather"]?[0]?["main"]?.ToString() ?? "-";
+                    string weatherDesc = json["weather"]?[0]?["description"]?.ToString() ?? "-";
+                    string temp = json["main"]?["temp"]?.ToString() ?? "-";
+
+                    WeatherLabel.Text = $"{weatherMain} ({weatherDesc}), {temp}°C";
+                }
+            }
+            catch (Exception ex)
+            {
+                WeatherLabel.Text = "Error retrieving weather";
+                System.Diagnostics.Debug.WriteLine("Weather API error: " + ex.Message);
+            }
+
         }
 
     }
