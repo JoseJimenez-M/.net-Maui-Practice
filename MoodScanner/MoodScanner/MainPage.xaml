@@ -1,41 +1,122 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MoodScanner.MainPage">
+             x:Class="MoodScanner.MainPage"
+             BackgroundColor="#F5F6FA">
 
     <ScrollView>
         <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+            Spacing="20"
+            Padding="25"
+            VerticalOptions="StartAndExpand">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+            <!-- Weather Info -->
+            <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Actual Weather:" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50"/>
+                    <Label x:Name="WeatherLabel" Text="Weather" FontSize="18" TextColor="#34495E"/>
+                </VerticalStackLayout>
+            </Frame>
 
-            <Label
-                Text="Hello, OPEN CV!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+            <!-- Ubication Info -->
+            <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True" Margin="0,10,0,0">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Current Location:" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50"/>
+                    <Label x:Name="LocationLabel" Text="–" FontSize="18" TextColor="#34495E"/>
+                </VerticalStackLayout>
+            </Frame>
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
 
+            <!-- Persons detected -->
+            <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True">
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Persons detected:" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50"/>
+                    <Label x:Name="PeopleCountLabel" Text="-" FontSize="20" TextColor="#34495E"/>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Romantic Mode -->
+            <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True">
+                <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                    <Label Text="Romantic Mode" FontSize="18" VerticalOptions="Center" TextColor="#2C3E50"/>
+                    <Switch x:Name="RomanticModeSwitch" HorizontalOptions="EndAndExpand"/>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Budget Limit -->
+            <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Budget Limit (per person)" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50"/>
+                    <Picker x:Name="BudgetPicker" Title="Select budget">
+                        <Picker.Items>
+                            <x:String>20</x:String>
+                            <x:String>50</x:String>
+                            <x:String>100</x:String>
+                            <x:String>No limit</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Distance Range -->
+            <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Distance Range (km)" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50"/>
+                    <Picker x:Name="DistancePicker" Title="Select distance">
+                        <Picker.Items>
+                            <x:String>1</x:String>
+                            <x:String>5</x:String>
+                            <x:String>10</x:String>
+                            <x:String>20</x:String>
+                            <x:String>50</x:String>
+                            <x:String>No limit</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Activity Type -->
+            <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Activity Type" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50"/>
+                    <Picker x:Name="ActivityPicker" Title="Select activity type">
+                        <Picker.Items>
+                            <x:String>Restaurant</x:String>
+                            <x:String>Walk</x:String>
+                            <x:String>Picnic</x:String>
+                            <x:String>Art</x:String>
+                            <x:String>Indoor</x:String>
+                            <x:String>Outdoor</x:String>
+                            <x:String>Action-based</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <!-- IA Button -->
             <Button
                 x:Name="CounterBtn"
-                Text="Click me"
+                Text="Lets Start!"
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center"
+                BackgroundColor="#2E86DE"
+                TextColor="White"
+                CornerRadius="25"
+                Padding="15,10"
+                WidthRequest="200" />
+
+
+            <!-- Recomendation -->
+            <Frame CornerRadius="15" Padding="15" BackgroundColor="#D6EAF8" HasShadow="True" Margin="0,20,0,0">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Recommended Activity:" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50"/>
+                    <Label x:Name="RecommendedActivityLabel" Text="–" FontSize="18" TextColor="#34495E"/>
+                </VerticalStackLayout>
+            </Frame>
+
 
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
