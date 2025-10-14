@@ -35,19 +35,22 @@
                 </HorizontalStackLayout>
             </Frame>
 
-            <!-- Romantic Mode -->
             <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True">
                 <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
                     <Label Text="Romantic Mode" FontSize="18" VerticalOptions="Center" TextColor="#2C3E50"/>
-                    <Switch x:Name="RomanticModeSwitch" HorizontalOptions="EndAndExpand"/>
+                    <Switch x:Name="RomanticModeSwitch"
+                HorizontalOptions="EndAndExpand"
+                OnColor="#E74C3C"   
+                        ThumbColor="#FFFFFF"/>
                 </HorizontalStackLayout>
             </Frame>
+
 
             <!-- Budget Limit -->
             <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True">
                 <VerticalStackLayout Spacing="8">
                     <Label Text="Budget Limit (per person)" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50"/>
-                    <Picker x:Name="BudgetPicker" Title="Select budget">
+                    <Picker x:Name="BudgetPicker" Title="Select budget" TextColor="#2C3E50">
                         <Picker.Items>
                             <x:String>20</x:String>
                             <x:String>50</x:String>
@@ -62,7 +65,7 @@
             <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True">
                 <VerticalStackLayout Spacing="8">
                     <Label Text="Distance Range (km)" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50"/>
-                    <Picker x:Name="DistancePicker" Title="Select distance">
+                    <Picker x:Name="DistancePicker" Title="Select distance" TextColor="#2C3E50">
                         <Picker.Items>
                             <x:String>1</x:String>
                             <x:String>5</x:String>
@@ -79,7 +82,7 @@
             <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True">
                 <VerticalStackLayout Spacing="8">
                     <Label Text="Activity Type" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50"/>
-                    <Picker x:Name="ActivityPicker" Title="Select activity type">
+                    <Picker x:Name="ActivityPicker" Title="Select activity type" TextColor="#2C3E50">
                         <Picker.Items>
                             <x:String>Restaurant</x:String>
                             <x:String>Walk</x:String>
