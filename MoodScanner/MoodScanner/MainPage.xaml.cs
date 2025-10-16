@@ -1,10 +1,11 @@
-﻿using MoodScanner.Services;
-using Microsoft.Maui.Devices.Sensors;
+﻿using Microsoft.Maui;
 using Microsoft.Maui.Devices;
-using System.Net.Http;
-using Newtonsoft.Json.Linq;
+using Microsoft.Maui.Devices.Sensors;
 using Microsoft.Maui.Storage;
+using MoodScanner.Services;
+using Newtonsoft.Json.Linq;
 using System.IO;
+using System.Net.Http;
 
 
 namespace MoodScanner
@@ -69,6 +70,43 @@ namespace MoodScanner
                     }
                 }
             }
+
+            //RECOMMEND:
+            var (suggestion, activityKeyword) = CollectAndGenerateKeyword();
+            RecommendedActivityTitle.Text = suggestion;
+
+            var location = await Geolocation.Default.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10)));
+            if (location == null)
+            {
+                RecommendedActivityLabel.Text = "Location not found";
+                return;
+            }
+
+            double latitude = location.Latitude;
+            double longitude = location.Longitude;
+            int distance = 50000;
+
+
+            var place = await FoursquareService.GetNearbyPlaceWithPhotoAsync(activityKeyword, latitude, longitude, distance);
+            //var place = await FoursquareService.GetNearbyPlaceWithPhotoAsync("park", latitude, longitude, 5000);
+
+            if (place != null)
+            {
+                RecommendedActivityLabel.Text = $"{place.Name}\n{place.Category}\n{place.Address}";
+                if (!string.IsNullOrEmpty(place.ImageUrl))
+                {
+                    PlaceImage.Source = place.ImageUrl;
+                    PlaceImage.IsVisible = true;
+                }
+            }
+            else
+            {
+                RecommendedActivityLabel.Text = "No nearby place found.";
+                PlaceImage.Source = null;
+            }
+
+
+
         }
         protected override async void OnAppearing()
         {
@@ -148,7 +186,7 @@ namespace MoodScanner
                 using (var stream = await FileSystem.OpenAppPackageFileAsync("apikey.txt"))
                 using (var reader = new StreamReader(stream))
                 {
-                    apiKey = reader.ReadToEnd().Trim();
+                    apiKey = reader.ReadLine()?.Trim();
                 }
 
 
@@ -173,6 +211,25 @@ namespace MoodScanner
             }
 
         }
+
+
+        //RECOMMENDATION:
+
+        private (string suggestion, string keyWord) CollectAndGenerateKeyword()
+        {
+            string weather = WeatherLabel.Text?.Trim() ?? "";
+            string location = LocationLabel.Text?.Trim() ?? "-";
+            int.TryParse(PeopleCountLabel.Text, out int peopleCount);
+            bool romanticMode = RomanticModeSwitch.IsToggled;
+            string budget = BudgetPicker.SelectedItem?.ToString() ?? "";
+            string distance = DistancePicker.SelectedItem?.ToString() ?? "";
+            string activityType = ActivityPicker.SelectedItem?.ToString() ?? "";
+
+            return ActivityService.GetSuggestedActivity(
+                weather, peopleCount, romanticMode, budget, distance, activityType
+            );
+        }
+
 
     }
 }

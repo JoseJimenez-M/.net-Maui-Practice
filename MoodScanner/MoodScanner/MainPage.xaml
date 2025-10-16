@@ -35,13 +35,14 @@
                 </HorizontalStackLayout>
             </Frame>
 
+            <!-- Romantic Mode -->
             <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True">
                 <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
                     <Label Text="Romantic Mode" FontSize="18" VerticalOptions="Center" TextColor="#2C3E50"/>
                     <Switch x:Name="RomanticModeSwitch"
                 HorizontalOptions="EndAndExpand"
-                OnColor="#E74C3C"   
-                        ThumbColor="#FFFFFF"/>
+                OnColor="#E1A5C3"   
+                        ThumbColor="#000000"/>
                 </HorizontalStackLayout>
             </Frame>
 
@@ -64,15 +65,14 @@
             <!-- Distance Range -->
             <Frame CornerRadius="15" Padding="15" BackgroundColor="White" HasShadow="True">
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="Distance Range (km)" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50"/>
+                    <Label Text="Distance Range (Mts)" FontSize="18" FontAttributes="Bold" TextColor="#2C3E50"/>
                     <Picker x:Name="DistancePicker" Title="Select distance" TextColor="#2C3E50">
                         <Picker.Items>
-                            <x:String>1</x:String>
-                            <x:String>5</x:String>
-                            <x:String>10</x:String>
-                            <x:String>20</x:String>
-                            <x:String>50</x:String>
-                            <x:String>No limit</x:String>
+                            <x:String>500</x:String>
+                            <x:String>1000</x:String>
+                            <x:String>3000</x:String>
+                            <x:String>4000</x:String>
+                            <x:String>5000</x:String>
                         </Picker.Items>
                     </Picker>
                 </VerticalStackLayout>
@@ -114,8 +114,10 @@
             <!-- Recomendation -->
             <Frame CornerRadius="15" Padding="15" BackgroundColor="#D6EAF8" HasShadow="True" Margin="0,20,0,0">
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="Recommended Activity:" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50"/>
+                    <Label Text="Recommended Activity:" FontSize="22" FontAttributes="Bold" TextColor="#2C3E50"/>
+                    <Label x:Name="RecommendedActivityTitle" Text="–" FontSize="20" TextColor="#34495E"/>
                     <Label x:Name="RecommendedActivityLabel" Text="–" FontSize="18" TextColor="#34495E"/>
+                    <Image x:Name="PlaceImage" HeightRequest="200" WidthRequest="300" Aspect="AspectFill" IsVisible="False"/>
                 </VerticalStackLayout>
             </Frame>
 
