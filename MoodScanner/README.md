@@ -14,7 +14,7 @@ Geoapify (Reverse geocoding / location)
 Create a file in your project:
 Resources/Raw/apikey.txt
 
-Paste your API keys in two lines:
+Paste your API keys in two lines: <br>
 YOUR_APIKEY_OPENWEATHER <br>
 YOUR_APIKEY_GEOAPIFY
 
